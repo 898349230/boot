@@ -1,0 +1,34 @@
+server:
+  port: 8081
+
+# 值的写法
+# map, 对象
+friend:
+  lastName: zhangSan
+  age: 20
+# 行内写法
+friend2: {lastName: lisi,age: 22}
+
+# 数组（list， set）
+pet:
+  - cat
+  - dog
+  - donkey
+# 行内写法
+pet2: [cat,dog,donkey]
+
+
+# 配置文件值注入
+person:
+  lastName: hello
+  age: 23
+  boss: false
+  birth: 2018/12/19
+  maps: {key1: aa,key2: bb}
+  lists:
+    - zhangSan
+    - liSi
+  dog:
+    name: 小狗
+    age: 11
+
