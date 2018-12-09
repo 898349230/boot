@@ -1,6 +1,7 @@
 server:
   port: 8081
-
+#  查看详细的自动配置报告
+#debug: true
 # 值的写法
 # map, 对象
 friend:
@@ -31,4 +32,30 @@ person:
   dog:
     name: 小狗
     age: 11
+
+# 日志
+logging:
+# 输出文件路径
+  path: C:\a.log
+# 日志级别
+  level:
+    root: info
+    com.ab.controller: info
+    com.ab.service: debug
+#      日志输出格式
+  pattern:
+#  控制台
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} -%5p ${PID:-} [%15.15t] %-30.30C{1.} : %m%n"
+#    文件
+#    file: "%d{yyyy-MM-dd HH:mm:ss} -%5p ${PID:-} [%15.15t] %-30.30C{1.} : %m%n"
+#logging.level.com.ab.service=info
+#logging.level.root=debug
+
+#禁用模板引擎的缓存
+spring:
+  thymeleaf.cache: false
+  # 定位模板的目录
+  mvc.view.prefix: classpath:/templates/
+  # 给返回的页面添加后缀名
+  mvc.view.suffix: .html
 
