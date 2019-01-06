@@ -31,4 +31,5 @@ public class ViewConfig implements WebMvcConfigurer{
         return new MyLocalResovlver();
     }
 
+
 }

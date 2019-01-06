@@ -19,6 +19,8 @@ public class LoginInterceptor implements HandlerInterceptor {
         logger.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ RequestURI : " + request.getRequestURI());
         if(null == loginUser){
             logger.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ loginUser is null ");
+            response.setCharacterEncoding("utf-8");
+            response.getWriter().write("Please login!!!!!!!!!!!!!!");
             return false;
         }
         return true;

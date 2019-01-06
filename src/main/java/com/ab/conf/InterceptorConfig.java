@@ -3,10 +3,8 @@ package com.ab.conf;
 import com.ab.interceptors.LoginInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
@@ -25,6 +23,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
         registry.addInterceptor(new LoginInterceptor()).
                 excludePathPatterns("/success", "/hello").
                 excludePathPatterns("/asserts/**", "/webjars/**").
-                excludePathPatterns("/user/login", "/","/index.html");
+                excludePathPatterns("/user/login", "/","/index.html").
+                excludePathPatterns("/myServlet", "/druid/**");
     }
 }
