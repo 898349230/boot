@@ -61,7 +61,7 @@ spring:
   datasource:
     username: root
     password: 123456
-    url: jdbc:mysql://localhost:3306/db01
+    url: jdbc:mysql://aliyun.com:3309/db01
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
 
@@ -77,19 +77,26 @@ spring:
     testOnReturn: false
     poolPreparedStatements: true
   #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
-    filters: stat,wall,log4j
-    maxPoolPreparedStatementPerConnectionSize: 20
-    useGlobalDataSourceStat: true
-    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500'
-# jpa 配置
-  jpa:
-    hibernate:
-#     更新或者创建数据表结构
-      ddl-auto: update
-#    控制台显示SQL
-    show-sql: true
-#    设置表引擎为 InnoDB
-    databasePlatform: org.hibernate.dialect.MySQL55Dialect
+#    filters: stat,wall,log4j
+#    maxPoolPreparedStatementPerConnectionSize: 20
+#    useGlobalDataSourceStat: true
+#    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500'
+## jpa 配置
+#  jpa:
+#    hibernate:
+##     更新或者创建数据表结构
+#      ddl-auto: update
+##    控制台显示SQL
+#    show-sql: true
+##    设置表引擎为 InnoDB
+#    databasePlatform: org.hibernate.dialect.MySQL55Dialect
+# rabbitMQ 配置
+  rabbitmq:
+    addresses: aliyun.com
+    port: 5672
+    username: root
+    password: root
+    virtual-host: /testhost
 
 #hibernate
 #  dialect.storage_engine
@@ -100,4 +107,3 @@ mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
 #    schema:
 #      - classpath:sql/employee.sql
-
