@@ -21,7 +21,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
         logger.info("~~~~~~~~~~~~~~~~ 添加拦截器 ~~~~~~~");
 //      拦截请求路路径           不拦截那些请求
         registry.addInterceptor(new LoginInterceptor()).
-                excludePathPatterns("/success", "/hello").
+                excludePathPatterns("/success", "/hello", "/api/**").
                 excludePathPatterns("/asserts/**", "/webjars/**").
                 excludePathPatterns("/user/login", "/","/index.html").
                 excludePathPatterns("/myServlet", "/druid/**");
