@@ -1,12 +1,10 @@
 package com.ab.controller;
 
-import com.ab.bean.Department;
-import com.ab.bean.Employee;
-import com.ab.bean.Person;
-import com.ab.bean.Person2;
+import com.ab.bean.*;
 import com.ab.exception.UserNotExistException;
 import com.ab.mapper.DepartmentMapper;
 import com.ab.mapper.EmployeeMapper;
+import com.ab.repository.UserRepository;
 import com.ab.service.HelloService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,6 +30,8 @@ public class HelloController {
     private EmployeeMapper employeeMapper;
     @Autowired
     private DepartmentMapper departmentMapper;
+    @Autowired
+    private UserRepository userRepository;
 
     private static Logger logger = LoggerFactory.getLogger(HelloController.class);
 
@@ -70,5 +70,26 @@ public class HelloController {
         Department department = departmentMapper.getDepartmentById(id);
         return department;
     }
+
+    /**
+     * jpa 新增数据
+     */
+    @ResponseBody
+    @RequestMapping(value = "/user")
+    public User addUser(User user){
+        User u = userRepository.save(user);
+        return u;
+    }
+
+    /**
+     * jpa 查询数据
+     */
+    @ResponseBody
+    @RequestMapping(value = "/user/{id}")
+    public User addUser(@PathVariable(value = "id") String id){
+        User user = userRepository.findById(id).get();
+        return user;
+    }
+
 
 }
