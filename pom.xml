@@ -85,6 +85,12 @@
 			<version>4.0.0</version>
 		</dependency>
 
+		<!-- rabbitMQ -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -102,9 +108,7 @@
 			<version>1.2.17</version>
 		</dependency>
 
-	</dependencies>
-
-
+</dependencies>
 	<!-- 该插件 将应用打包成一个可执行的jar -->
 	<build>
 		<plugins>
