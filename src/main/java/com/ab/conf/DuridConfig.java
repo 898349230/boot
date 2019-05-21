@@ -3,6 +3,8 @@ package com.ab.conf;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
@@ -20,6 +22,8 @@ import java.util.Map;
 @Configuration
 public class DuridConfig {
 
+    private static final Logger logger = LoggerFactory.getLogger(DuridConfig.class);
+
     // 指定配置
     @ConfigurationProperties(prefix = "spring.datasource")
     @Bean
@@ -30,6 +34,8 @@ public class DuridConfig {
     //1、配置一个管理后台的Servlet
     @Bean
     public ServletRegistrationBean statViewServlet(){
+        logger.info(" DuridConfig  statViewServlet start");
+
         ServletRegistrationBean bean = new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
         Map<String,String> initParams = new HashMap<>();
 
@@ -39,6 +45,7 @@ public class DuridConfig {
         initParams.put("deny","192.168.15.21");
 
         bean.setInitParameters(initParams);
+        logger.info(" DuridConfig  statViewServlet end");
         return bean;
     }
 
