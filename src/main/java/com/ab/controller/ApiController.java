@@ -1,5 +1,6 @@
 package com.ab.controller;
 
+import com.ab.elasticsearch.ElasticsearchService;
 import com.ab.rabbitmq.RabbitMQSenderService;
 import com.ab.redis.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ public class ApiController {
     private RabbitMQSenderService rabbitMQSenderService;
     @Autowired
     private RedisService redisService;
+    @Autowired
+    private ElasticsearchService elasticsearchService;
 
     /**
      * 测试 发送rabbitMQ消息
@@ -54,6 +57,29 @@ public class ApiController {
         String str = redisService.getString(key);
         return str;
     }
+
+    /**
+     * 测试 es 增加数据
+     * @return
+     */
+    @GetMapping(value = "/esAdd")
+    @ResponseBody
+    public String elastisearchPut(){
+        Integer code = elasticsearchService.addPerson();
+        return code.toString();
+    }
+
+    /**
+     * 测试 es 获取数据
+     * @return
+     */
+    @GetMapping(value = "/esGet")
+    @ResponseBody
+    public String elastisearchGet(){
+        String str = elasticsearchService.getPerson();
+        return str;
+    }
+
 
 
 }
