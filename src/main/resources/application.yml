@@ -117,3 +117,10 @@ mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
 #    schema:
 #      - classpath:sql/employee.sql
+
+# 自定义 es RestClient 配置文件
+ab:
+  elasticsearch:
+    hostname: aliyun.com
+    port: 9200
+    schema: http

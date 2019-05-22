@@ -5,6 +5,7 @@ import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestClientBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
  *
  */
 @Configuration
+@EnableConfigurationProperties(ESRestClientProperties.class)
 public class ESConfig {
 
     private static final Logger logger = LoggerFactory.getLogger(ESConfig.class);
@@ -26,13 +28,15 @@ public class ESConfig {
 //        return client;
 //    }
 
-
     @Bean
-    public RestClient restClient(){
+    public RestClient restClient(ESRestClientProperties properties){
         logger.info(" ESConfig restClient start");
-        RestClientBuilder builder = RestClient.builder(new HttpHost("aliyun.com", 9200, "http"));
+        RestClientBuilder builder = RestClient.builder(new HttpHost(properties.getHostname(), properties.getPort(), properties.getSchema()));
         RestClient build = builder.build();
         logger.info(" ESConfig restClient end");
         return build;
     }
 }
+
+
+
